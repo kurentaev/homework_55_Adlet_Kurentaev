@@ -1,0 +1,20 @@
+[
+{
+  "model": "webapp.taskslist",
+  "pk": 1,
+  "fields": {
+    "description": "почистить компьютер",
+    "status": "Новая",
+    "deadline": "2022-09-22"
+  }
+},
+{
+  "model": "webapp.taskslist",
+  "pk": 2,
+  "fields": {
+    "description": "Убраться дома",
+    "status": "В процессе",
+    "deadline": null
+  }
+}
+]

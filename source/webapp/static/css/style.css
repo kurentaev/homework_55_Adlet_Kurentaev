@@ -1,0 +1,17 @@
+.home{
+    margin-top: 350px;
+    text-align: center;
+    background-color: #ab1b1bad;
+}
+
+.stats{
+    margin-top: 100px;
+    margin-left: 50px;
+    text-align: left;
+    background-color: #ab1b1bad;
+    font-weight: bold;
+}
+
+.card{
+    background-color: #ffc107;
+}

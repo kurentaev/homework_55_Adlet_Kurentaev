@@ -1,3 +1,12 @@
 from django.db import models
 
-# Create your models here.
+
+class TasksList(models.Model):
+    choices = [('new', 'Новая'), ('in_process', 'В процессе'), ('done', 'Сделано')]
+
+    description = models.TextField(max_length=3000, null=False, blank=False, default='None', verbose_name='Описание')
+    status = models.CharField(max_length=200, choices=choices, default='new', verbose_name='Статус')
+    deadline = models.DateField(null=True, blank=True, verbose_name='Срок выполнения')
+
+    def __str__(self):
+        return f"{self.description} - {self.status} - {self.deadline}"

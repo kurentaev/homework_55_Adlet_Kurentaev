@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Task
+{% endblock %}
+
+{% block menu %}
+<a class="nav-link active" href="{% url 'todo_add' %}">Task add</a>
+{% endblock %}
+
+{% block content %}
+      <main role="main" class="inner cover">
+        <p class="lead">
+          <h2>Task: {{ task.title }}</h2>
+          <h2>Status: {{ task.status }}</h2>
+          <h2>Deadline: {{ task.deadline|default_if_none:"" }}</h2>
+          <h2>Description: {{ task.description | linebreaks }}</h2>
+          <p><a href="{% url 'delete' task.pk %}">Удалить</a></p>
+          <hr>
+      </main>
+
+{% endblock %}

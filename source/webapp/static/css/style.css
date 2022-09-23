@@ -105,15 +105,18 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
+  text-align: right;
 }
 
 .form-control {
     display: inline;
-    margin: 20px 0px 20px 42px;
-    width: 73%;
+    margin: 20px 0px;
 }
 
-.deadline{
-    margin-left: 21px;
-    margin-bottom: 20px;
+.description{
+    margin-top: 20px;
+}
+
+.detail{
+    margin-right: 15px;
 }

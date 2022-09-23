@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index page</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-</head>
-<body>
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">To-Do List</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="/todo_list/add">Add Task</a>
-          </nav>
-        </div>
-      </header>
+{% extends 'base.html' %}
 
+{% block menu %}
+<a class="nav-link active" href="{% url 'todo_add' %}">Task add</a>
+{% endblock %}
+
+{% block content %}
       <main role="main" class="inner cover">
         <p class="lead">
             {% for task in tasks %}
-            <h2>Description: {{ task.description }}</h2>
+            <h2>Task: {{ task.title }}</h2>
             <h2>Status: {{ task.status }}</h2>
             <h2>Deadline: {{ task.deadline|default_if_none:"" }}</h2>
+            <a class="detail" href="{% url 'todo_detail' task.pk %}">Подробнее</a>
+            <a href="{% url 'delete' task.pk %}">Удалить</a>
             <hr>
             {% endfor %}
         </p>
@@ -34,7 +23,4 @@
           <p>Kurentaev Adlet <a href="/">Contacts</a></p>
         </div>
       </footer>
-    </div>
-</body>
-</html>
-
+{% endblock %}

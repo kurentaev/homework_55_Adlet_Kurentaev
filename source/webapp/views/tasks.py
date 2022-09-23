@@ -11,9 +11,10 @@ def add_view(request):
     else:
         deadline = request.POST.get('deadline')
     task_data = {
-        'description': request.POST.get('description'),
+        'title': request.POST.get('title'),
         'status': request.POST.get('status'),
-        'deadline': deadline
+        'deadline': deadline,
+        'description': request.POST.get('description')
     }
     TasksList.objects.create(**task_data)
     return redirect('/')

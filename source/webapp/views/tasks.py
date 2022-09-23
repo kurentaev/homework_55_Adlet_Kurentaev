@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.models import TasksList
 
@@ -16,5 +16,16 @@ def add_view(request):
         'deadline': deadline,
         'description': request.POST.get('description')
     }
-    TasksList.objects.create(**task_data)
+    task = TasksList.objects.create(**task_data)
+    return redirect('todo_detail', pk=task.pk)
+
+
+def task_view(request, pk):
+    task = get_object_or_404(TasksList, pk=pk)
+    return render(request, 'task.html', context={'task': task})
+
+
+def delete_view(request, pk):
+    task = get_object_or_404(TasksList, pk=pk)
+    task.delete()
     return redirect('/')

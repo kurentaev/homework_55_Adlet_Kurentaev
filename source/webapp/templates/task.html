@@ -12,10 +12,16 @@ Task
       <main role="main" class="inner cover">
         <p class="lead">
           <h2>Task: {{ task.title }}</h2>
-          <h2>Status: {{ task.status }}</h2>
+          <h2>Status:
+                {% for choice in choices %}
+                    {% if task.status == choice.0 %}
+                        {{ choice.1 }}
+                    {% endif %}
+                {% endfor %}
+          </h2>
           <h2>Deadline: {{ task.deadline|default_if_none:"" }}</h2>
           <h2>Description: {{ task.description | linebreaks }}</h2>
-          <p><a href="{% url 'delete' task.pk %}">Удалить</a></p>
+          <p><a href="{% url 'delete' task.pk %}">Delete</a></p>
           <hr>
       </main>
 

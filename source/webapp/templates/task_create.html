@@ -19,11 +19,15 @@ To-Do create
               <tr>
                 <td><label>Status</label></td>
                 <td>
-                    <select name="status" class="form-control">
-                        <option value="Новая">Новая</option>
-                        <option value="В процессе">В процессе</option>
-                        <option value="Сделано">Сделано</option>
-                    </select>
+                    <select name="status" id="status">
+                    {% for choice in choices %}
+                        {% if article.status == choice.0 %}
+                            <option value="{{ choice.0 }}" selected>{{ choice.1 }}</option>
+                        {% else %}
+                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
                 </td>
               </tr>
               <tr>

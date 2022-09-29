@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.models import TasksList
+from webapp.models import StatusChoices
 
 
 def add_view(request):
     if request.method == "GET":
-        return render(request, "task_create.html")
+        return render(request, "task_create.html", context={'choices': StatusChoices.choices})
     if request.POST.get('deadline') == '':
         deadline = None
     else:
@@ -22,7 +23,7 @@ def add_view(request):
 
 def task_view(request, pk):
     task = get_object_or_404(TasksList, pk=pk)
-    return render(request, 'task.html', context={'task': task})
+    return render(request, 'task.html', context={'task': task, "choices": StatusChoices.choices})
 
 
 def delete_view(request, pk):

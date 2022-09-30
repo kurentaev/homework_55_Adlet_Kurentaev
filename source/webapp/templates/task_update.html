@@ -9,7 +9,7 @@ Task update
         <p class="lead">
             <form action="{% url 'todo_update' task.pk %}" method="POST">
                 <div class="form">
-                    {% include 'partial/task_form_2.html' with button_text='Edit' %}
+                    {% include 'partial/task_form.html' with button_text='Edit' %}
                 </div>
             </form>
       </main>

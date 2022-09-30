@@ -6,25 +6,25 @@ from webapp.forms import TasksListForm
 
 
 def add_view(request):
-    form = TasksListForm()
     if request.method == "GET":
+        form = TasksListForm()
         return render(request, "task_create.html", context={'choices': StatusChoices.choices, 'form': form})
-    form = TasksListForm(request.POST)
-    if not form.is_valid():
-        return render(request, "task_create.html", context={'choices': StatusChoices.choices, 'form': form})
-    # if request.POST.get('deadline') == '':
-    #     deadline = None
-    # else:
-    #     deadline = request.POST.get('deadline')
-    # task_data = {
-    #     'title': request.POST.get('title'),
-    #     'status': request.POST.get('status'),
-    #     'deadline': deadline,
-    #     'description': request.POST.get('description')
-    # }
-    # task = TasksList.objects.create(**task_data)
-    task = TasksList.objects.create(**form.cleaned_data)
-    return redirect('todo_detail', pk=task.pk)
+    elif request.method == "POST":
+        form = TasksListForm(request.POST)
+        if form.is_valid():
+            if request.POST.get('deadline') == '':
+                print(123)
+                deadline = None
+            else:
+                deadline = request.POST.get('deadline')
+            task_data = {
+                'title': request.POST.get('title'),
+                'status': request.POST.get('status'),
+                'deadline': deadline,
+                'description': request.POST.get('description')
+            }
+            task = TasksList.objects.create(**task_data)
+            return redirect('todo_detail', pk=task.pk)
 
 
 def task_view(request, pk):
@@ -44,12 +44,34 @@ def confirm_delete(request, pk):
 
 
 def update_view(request, pk):
+    errors = {}
     task = get_object_or_404(TasksList, pk=pk)
-    if request.method == 'POST':
+    if request.method == 'GET':
+        form = TasksListForm(initial={
+            'title': task.title,
+            'status': task.status,
+            'deadline': task.deadline,
+            'description': task.description
+        })
+        return render(request, 'task_update.html', context={'form': form, 'task': task})
+    elif request.method == 'POST':
+        if request.POST.get('deadline') == '':
+            deadline = None
+        else:
+            deadline = request.POST.get('deadline')
         task.title = request.POST.get('title')
         task.status = request.POST.get('status')
-        task.deadline = request.POST.get('deadline')
+        task.deadline = deadline
         task.description = request.POST.get('description')
+        if errors:
+            return render(
+                request,
+                'task_update.html',
+                context={
+                    'task': task,
+                    'choices': StatusChoices.choices,
+                    'errors': errors
+                    })
         task.save()
         return redirect('todo_detail', pk=task.pk)
     return render(

@@ -3,38 +3,38 @@
   "model": "webapp.taskslist",
   "pk": 35,
   "fields": {
-    "title": "Занятие #53. Домашнее задание",
-    "status": "Новая",
+    "title": "Lesson #53. Homework",
+    "status": "new",
     "deadline": "2022-09-23",
-    "description": "Добавьте в модель задачи поле для подробного описания - текстовое поле (TextField), может быть пустым.\r\n\r\nСоздайте миграцию и примените её.\r\n\r\nЗаполните новое поле в существующих задачах какими-нибудь описаниями и обновите фикстуру."
+    "description": "Add a field for a detailed description to the task model - a text field (TextField), may be empty.\r\n\r\nCreate a migration and apply it.\r\n\r\nFill in the new field in the existing tasks with some descriptions and update the fixture."
   }
 },
 {
   "model": "webapp.taskslist",
   "pk": 36,
   "fields": {
-    "title": "Занятие #52. Домашнее задание",
-    "status": "Сделано",
+    "title": "Lesson #52. Homework",
+    "status": "new",
     "deadline": "2022-09-20",
-    "description": "id задачи для этой страницы должен передаваться, как часть пути, а не в строке запроса.\r\n\r\nНа главной странице подробное описание выводить не нужно.\r\n\r\nДобавьте ссылки для перехода от задач на главной странице к странице детального просмотра."
+    "description": "the task id for this page should be passed as part of the path, not in the query string.\r\n\r\nThere is no need to display a detailed description on the main page.\r\n\r\nAdd links to go from the tasks on the main page to the detailed view page."
   }
 },
 {
   "model": "webapp.taskslist",
   "pk": 37,
   "fields": {
-    "title": "Занятие #51. Домашнее задание",
-    "status": "Сделано",
+    "title": "Lesson #51. Homework",
+    "status": "new",
     "deadline": "2022-09-16",
-    "description": "Задайте имена для всех url и замените все ссылки и на сайте на генерацию с помощью функции reverse и тега {% url %}. \r\n\r\nДля перенаправления из форм используйте функцию redirect.\r\n\r\nДобавьте базовый шаблон и панель навигации."
+    "description": "Set names for all urls and replace all links on the site with the generation using the reverse function and the {%url%} tag. \r\n\r\nTo redirect from forms, use the redirect function.\r\n\r\nAdd a basic template and a navigation bar."
   }
 },
 {
   "model": "webapp.taskslist",
   "pk": 38,
   "fields": {
-    "title": "Занятие #54. Домашнее задание",
-    "status": "Новая",
+    "title": "Lesson #54. Homework",
+    "status": "new",
     "deadline": null,
     "description": ""
   }

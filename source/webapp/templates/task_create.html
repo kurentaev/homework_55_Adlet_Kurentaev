@@ -7,48 +7,12 @@ To-Do create
 {% block content %}
       <main role="main" class="inner cover">
         <p class="lead">
-            <form action="/todo_list/add/" method="POST">
-        {% csrf_token %}
-        <div class="form">
-          <div class="form_row">
-            <table>
-              <tr>
-                <td><lable for="title">Task: </lable></td>
-                <td><input id ="title" name ="title" type = "text" required></td>
-              </tr>
-              <tr>
-                <td><label>Status</label></td>
-                <td>
-                    <select name="status" id="status">
-                    {% for choice in choices %}
-                        {% if article.status == choice.0 %}
-                            <option value="{{ choice.0 }}" selected>{{ choice.1 }}</option>
-                        {% else %}
-                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-                </td>
-              </tr>
-              <tr>
-                <td><lable for="deadline">Deadline: </lable></td>
-                <td><input id ="deadline" name ="deadline" type = "date" value=""></td>
-              </tr>
-              <tr>
-                <td><lable for="description">Description: </lable></td>
-                <td><textarea class="description" id ="description" name ="description" type = "text"></textarea></td>
-              </tr>
-              <tr>
-                <td>
-                </td>
-                <td><input type="submit"></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-    </form>
+            <form action="{% url 'todo_add' %}" method="POST">
+            <div class="form">
+              {% include 'partial/task_form_2.html' with button_text='Create' %}
+            </div>
+            </form>
       </main>
-
       <footer class="mastfoot mt-auto">
         <div class="inner">
           <p>Kurentaev Adlet <a href="/">Contacts</a></p>

@@ -4,10 +4,6 @@
 Task
 {% endblock %}
 
-{% block menu %}
-<a class="nav-link active" href="{% url 'todo_add' %}">Task add</a>
-{% endblock %}
-
 {% block content %}
       <main role="main" class="inner cover">
         <p class="lead">
@@ -21,7 +17,8 @@ Task
           </h2>
           <h2>Deadline: {{ task.deadline|default_if_none:"" }}</h2>
           <h2>Description: {{ task.description | linebreaks }}</h2>
-          <p><a href="{% url 'delete' task.pk %}">Delete</a></p>
+          <a class="mx-2" href="{% url 'todo_update' task.pk %}">Edit</a>
+          <a class="mx-2" href="{% url 'delete' task.pk %}">Delete</a>
           <hr>
       </main>
 

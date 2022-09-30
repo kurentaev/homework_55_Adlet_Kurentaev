@@ -9,7 +9,7 @@ class StatusChoices(TextChoices):
 
 
 class TasksList(models.Model):
-    title = models.TextField(max_length=1000, null=False, blank=False, default='None', verbose_name='Задача')
+    title = models.TextField(max_length=1000, null=False, blank=False, verbose_name='Задача')
     status = models.CharField(verbose_name='Статус', choices=StatusChoices.choices, max_length=100,
                               default=StatusChoices.NEW)
     deadline = models.DateField(null=True, blank=True, verbose_name='Срок выполнения')

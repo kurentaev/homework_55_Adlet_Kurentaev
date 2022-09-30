@@ -47,9 +47,11 @@ def update_view(request, pk):
     task = get_object_or_404(TasksList, pk=pk)
     if request.method == 'POST':
         task.title = request.POST.get('title')
-        task.author = request.POST.get('status')
-        task.text = request.POST.get('deadline')
-        task.status = request.POST.get('description')
+        task.status = request.POST.get('status')
+        task.deadline = request.POST.get('deadline')
+        task.description = request.POST.get('description')
+        task.save()
+        return redirect('todo_detail', pk=task.pk)
     return render(
         request,
         'task_update.html',

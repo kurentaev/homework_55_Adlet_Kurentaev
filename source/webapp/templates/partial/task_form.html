@@ -1,0 +1,37 @@
+            {% csrf_token %}
+            <div class="form_row">
+            <table>
+              <tr>
+                <td><lable for="title">Task: </lable></td>
+                <td><input id ="title" name ="title" type = "text" value="{{ task.title }}"></td>
+              </tr>
+              <tr>
+                <td><label>Status</label></td>
+                <td>
+                    <select name="status" id="status">
+                    {% for choice in choices %}
+                        {% if article.status == choice.0 %}
+                            <option value="{{ choice.0 }}" selected>{{ choice.1 }}</option>
+                        {% else %}
+                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                </td>
+              </tr>
+              <tr>
+                <td><lable for="deadline">Deadline: </lable></td>
+                <td><input id ="deadline" name ="deadline" type = "date" value="{{ task.deadline }}"></td>
+              </tr>
+              <tr>
+                <td><lable for="description">Description: </lable></td>
+                <td><textarea class="description" id ="description" name ="description"
+                              type = "text">{{ task.description }}</textarea></td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td><input type="submit" value="{{ button_text }}"></td>
+              </tr>
+            </table>
+            </div>
